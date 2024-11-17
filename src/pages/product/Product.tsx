@@ -28,13 +28,7 @@ function Product() {
               alt=""
             />
             <div>
-              <Button style={{ padding: "6px 6px" }} variant="danger">
-                Add to card
-              </Button>
               <Button variant="primary">Add to card</Button>
-              <Button variant="secondary">Add to card</Button>
-              <Button variant="success">Add to card</Button>
-              <Button variant="warning">Add to card</Button>
             </div>
           </div>
         </div>
