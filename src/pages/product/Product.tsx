@@ -1,6 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import Container from "../../components/container/Container";
+import Button from "../../components/button/Button";
 
 function Product() {
   const params = useParams();
@@ -27,7 +28,13 @@ function Product() {
               alt=""
             />
             <div>
-              <button>Add to card</button>
+              <Button onClick={()=>{
+                alert('click')
+              }}
+              id='btn'
+              className="btn-red">
+                Add to card
+                </Button>
             </div>
           </div>
         </div>
