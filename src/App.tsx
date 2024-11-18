@@ -3,6 +3,7 @@ import Home from "./pages/home/Home";
 import Store from "./pages/home/store/Store";
 import Layout from "./components/layout/Layout";
 import Product from "./pages/product/Product";
+import Cart from "./pages/cart/Cart";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/store" element={<Store />} />
           <Route path="/product/:id" element={<Product/>} />
+          <Route path="/cart" element={<Cart/>} />
         </Routes>
       </Layout>
   );
@@ -18,4 +20,4 @@ function App() {
 
 export default App;
 
-// lesson 7 min 
+// lesson 9 min 
