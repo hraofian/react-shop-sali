@@ -11,7 +11,12 @@ function Product() {
   const params = useParams<{ id: string }>();
   const [product, setProduct] = useState<IProduct>();
 
-  const {getProductQty, handleDecreaseProductQty,handleIncreaseProductQty, cartItems } = useShoppingCartContext();
+  const {
+    getProductQty,
+    handleDecreaseProductQty,
+    handleIncreaseProductQty,
+    cartItems,
+  } = useShoppingCartContext();
 
   useEffect(() => {
     getProduct(params.id as string).then((data) => {
@@ -33,25 +38,39 @@ function Product() {
           <div className="bg-slate-400 col-span-4 p-4">
             <img className="rounded" src={product?.image} alt="" />
             <div>
-              <Button
-                onClick={() => {
-                  handleIncreaseProductQty(parseInt(params.id as string));
-                }}
-                className="mt-2 w-full"
-                variant="primary"
-              >
-                Add to card
-              </Button>
-              <span >{getProductQty(parseInt(params.id as string))}</span>
-              <Button
-                onClick={() => {
-                  handleDecreaseProductQty(parseInt(params.id as string));
-                }}
-                className="mt-2 w-full"
-                variant="primary"
-              >
-                -
-              </Button>
+              {getProductQty(parseInt(params.id as string)) === 0 ? (
+                <Button
+                  onClick={() => {
+                    handleIncreaseProductQty(parseInt(params.id as string));
+                  }}
+                  className="mt-2 w-full"
+                  variant="primary"
+                >
+                  Add to card
+                </Button>
+              ) : (
+                <div>
+                  <Button
+                    onClick={() => {
+                      handleIncreaseProductQty(parseInt(params.id as string));
+                    }}
+                    className="mt-2 w-full"
+                    variant="primary"
+                  >
+                    +
+                  </Button>
+                  <span className="flex justify-center items-center">{getProductQty(parseInt(params.id as string))}</span>
+                  <Button
+                    onClick={() => {
+                      handleDecreaseProductQty(parseInt(params.id as string));
+                    }}
+                    className="mt-2 w-full"
+                    variant="danger"
+                  >
+                    -
+                  </Button>
+                </div>
+              )}
             </div>
           </div>
         </div>
