@@ -23,4 +23,4 @@ function App() {
 
 export default App;
 
-// lesson 10 min
+// lesson 14 min
