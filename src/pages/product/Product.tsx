@@ -15,6 +15,7 @@ function Product() {
     getProductQty,
     handleDecreaseProductQty,
     handleIncreaseProductQty,
+    handleRemoveProduct,
     cartItems,
   } = useShoppingCartContext();
 
@@ -68,6 +69,15 @@ function Product() {
                     variant="danger"
                   >
                     -
+                  </Button>
+                  <Button
+                    onClick={() => {
+                      handleRemoveProduct(parseInt(params.id as string));
+                    }}
+                    className="mt-2 w-full"
+                    variant="warning"
+                  >
+                    Remove 
                   </Button>
                 </div>
               )}
