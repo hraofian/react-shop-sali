@@ -7,6 +7,7 @@ interface ICartItem {
 
 interface IShoppingCartContext {
   cartItems: ICartItem[];
+  handleIncreaseProductQty: (id: number)=> void
 }
 
 interface IShoppingCartProvider {
@@ -15,15 +16,32 @@ interface IShoppingCartProvider {
 
 export const ShoppingCartContext = createContext({} as IShoppingCartContext);
 
-
-export const useShoppingCartContext = ()=>{
-  return useContext(ShoppingCartContext)
-}
+export const useShoppingCartContext = () => {
+  return useContext(ShoppingCartContext);
+};
 
 export function ShoppingCartProvider({ children }: IShoppingCartProvider) {
   const [cartItems, setCartItems] = useState<ICartItem[]>([]);
+
+  const handleIncreaseProductQty = (id: number) => {
+    setCartItems((currentItems) => {
+      let selectedItem = currentItems.find((item) => item.id == id);
+      if (selectedItem == null) {
+        return [...currentItems, { id: id, qty: 1 }];
+      } else {
+        return currentItems.map((item) => {
+          if (item.id == id) {
+            return { ...item, qty: item.qty + 1 };
+          } else {
+            return item;
+          }
+        });
+      }
+    });
+  };
+
   return (
-    <ShoppingCartContext.Provider value={{ cartItems }}>
+    <ShoppingCartContext.Provider value={{ cartItems , handleIncreaseProductQty }}>
       {children}
     </ShoppingCartContext.Provider>
   );
