@@ -8,6 +8,7 @@ interface ICartItem {
 interface IShoppingCartContext {
   cartItems: ICartItem[];
   handleIncreaseProductQty: (id: number)=> void
+  handleDecreaseProductQty: (id: number) => void
 }
 
 interface IShoppingCartProvider {
@@ -40,8 +41,25 @@ export function ShoppingCartProvider({ children }: IShoppingCartProvider) {
     });
   };
 
+  const handleDecreaseProductQty = (id: number) =>{
+    setCartItems((currentItems)=> {
+      let selectedItem = currentItems.find((item)=> item.id == id)
+      if (selectedItem?.qty === 1){
+        return currentItems.filter((item)=> item.id !== id)
+      }else {
+        return currentItems.map((item)=> {
+          if(item.id == id) {
+            return {...item , qty: item.qty - 1}
+          }else{
+            return item
+          }
+        })
+      }
+    })
+  }
+
   return (
-    <ShoppingCartContext.Provider value={{ cartItems , handleIncreaseProductQty }}>
+    <ShoppingCartContext.Provider value={{ handleDecreaseProductQty,cartItems , handleIncreaseProductQty }}>
       {children}
     </ShoppingCartContext.Provider>
   );
