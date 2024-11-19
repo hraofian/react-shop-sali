@@ -9,6 +9,7 @@ interface IShoppingCartContext {
   cartItems: ICartItem[];
   handleIncreaseProductQty: (id: number)=> void
   handleDecreaseProductQty: (id: number) => void
+  getProductQty: (id: number) => number
 }
 
 interface IShoppingCartProvider {
@@ -58,8 +59,12 @@ export function ShoppingCartProvider({ children }: IShoppingCartProvider) {
     })
   }
 
+  const getProductQty = (id: number) => {
+    return cartItems.find(item=> item.id == id)?.qty || 0
+  }
+
   return (
-    <ShoppingCartContext.Provider value={{ handleDecreaseProductQty,cartItems , handleIncreaseProductQty }}>
+    <ShoppingCartContext.Provider value={{ getProductQty,handleDecreaseProductQty,cartItems , handleIncreaseProductQty }}>
       {children}
     </ShoppingCartContext.Provider>
   );

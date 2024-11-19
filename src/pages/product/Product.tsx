@@ -11,7 +11,7 @@ function Product() {
   const params = useParams<{ id: string }>();
   const [product, setProduct] = useState<IProduct>();
 
-  const { handleDecreaseProductQty,handleIncreaseProductQty, cartItems } = useShoppingCartContext();
+  const {getProductQty, handleDecreaseProductQty,handleIncreaseProductQty, cartItems } = useShoppingCartContext();
 
   useEffect(() => {
     getProduct(params.id as string).then((data) => {
@@ -42,6 +42,7 @@ function Product() {
               >
                 Add to card
               </Button>
+              <span >{getProductQty(parseInt(params.id as string))}</span>
               <Button
                 onClick={() => {
                   handleDecreaseProductQty(parseInt(params.id as string));
