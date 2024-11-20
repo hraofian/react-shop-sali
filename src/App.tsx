@@ -5,6 +5,8 @@ import Layout from "./components/layout/Layout";
 import Product from "./pages/product/Product";
 import Cart from "./pages/cart/Cart";
 import { ShoppingCartProvider } from "./context/ShoppingCartContext";
+import { PrivateRoute } from "./components/privaterout/PrivateRout";
+import Login from "./pages/login/Login";
 
 function App() {
   return (
@@ -13,8 +15,11 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/store" element={<Store />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/product/:id" element={<Product />} />
-          <Route path="/cart" element={<Cart />} />
+          <Route element={<PrivateRoute/>}>
+            <Route path="/cart" element={<Cart />} />
+          </Route>
         </Routes>
       </Layout>
     </ShoppingCartProvider>
@@ -23,4 +28,4 @@ function App() {
 
 export default App;
 
-// lesson 22 min
+// lesson 23 min

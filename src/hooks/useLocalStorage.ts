@@ -4,8 +4,9 @@ export function useLocalStorage<T>(key: string, initialValue: T) {
   const [value, setValue] = useState<T>(() => {
     let localCart = localStorage.getItem("cartItem");
 
-    if (localCart != null) return JSON.parse(localCart);
-    else {
+    if (localCart != null) {
+      return JSON.parse(localCart);
+    } else {
       return initialValue;
     }
   });
@@ -14,5 +15,5 @@ export function useLocalStorage<T>(key: string, initialValue: T) {
     localStorage.setItem(key, JSON.stringify(value));
   }, [key, value]);
 
-  return [value, setValue] as [typeof value , typeof setValue]
+  return [value, setValue] as [typeof value, typeof setValue];
 }
