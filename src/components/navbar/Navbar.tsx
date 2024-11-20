@@ -1,8 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Container from "../container/Container";
+import { useShoppingCartContext } from "../../context/ShoppingCartContext";
 
 function Navbar() {
+  const { cartQty } = useShoppingCartContext();
   return (
     <div className="h-14 border-b-8 shadow flex items-center">
       <Container>
@@ -17,8 +19,9 @@ function Navbar() {
           </ul>
 
           <div>
-            <Link to='/cart'>
-            <button>سبد خرید</button>
+            <Link to="/cart">
+              <button>سبد خرید</button>
+              <span className="absolute w-8 h-8 bg-red-400 flex justify-center items-center rounded-full">{cartQty !== 0 ? cartQty : ""}</span>
             </Link>
           </div>
         </div>
