@@ -7,7 +7,7 @@ import { ShoppingCartContext, useShoppingCartContext } from "../../context/Shopp
 function Cart() {
   const {cartItems} = useShoppingCartContext()
 
- 
+ localStorage.setItem("office", "university")
 
   return (
     <div>
