@@ -13,10 +13,14 @@ function Cart() {
     <div>
       <Container>
         <div>
-          <CartItem />
-          <CartItem />
-          <CartItem />
-          <CartItem />
+          {
+            cartItems.map(item=>(
+              <CartItem {...item}/>
+
+            ))
+          }
+
+
         </div>
         <div className="text-right bg-slate-400 rounded p-6">
             <p> 2000 :قیمت کل</p>
