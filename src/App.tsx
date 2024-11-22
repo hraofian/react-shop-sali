@@ -4,7 +4,7 @@ import Store from "./pages/store/Store";
 import Layout from "./components/layout/Layout";
 import Product from "./pages/product/Product";
 import Cart from "./pages/cart/Cart";
-import { ShoppingCartProvider, useShoppingCartContext } from "./context/ShoppingCartContext";
+import { useShoppingCartContext } from "./context/ShoppingCartContext";
 import { PrivateRoute } from "./components/privaterout/PrivateRout";
 import Login from "./pages/login/Login";
 

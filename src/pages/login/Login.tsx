@@ -1,4 +1,4 @@
-import { ChangeEventHandler, useState } from "react";
+import { useState } from "react";
 import Button from "../../components/button/Button";
 import Container from "../../components/container/Container";
 import { useShoppingCartContext } from "../../context/ShoppingCartContext";

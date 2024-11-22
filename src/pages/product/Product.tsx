@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import {  useParams } from "react-router-dom";
 import Container from "../../components/container/Container";
 import Button from "../../components/button/Button";
 import { getProduct } from "../../services/api";
 import { IProduct } from "../../types/server";
 import { useShoppingCartContext } from "../../context/ShoppingCartContext";
-import CartItem from "../../components/cartitem/CartItem";
 
 function Product() {
   const params = useParams<{ id: string }>();
